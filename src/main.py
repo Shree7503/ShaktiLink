@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from src.routes import home_router, auth_router, panchayat_router, record_router
+from src.routes import index_router
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
@@ -20,7 +20,7 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-app.include_router(home_router.router)
-app.include_router(auth_router.router)
-app.include_router(panchayat_router.router)
-app.include_router(record_router.router)
+app.include_router(index_router.router)
+# app.include_router(auth_router.router)
+# app.include_router(panchayat_router.router)
+# app.include_router(record_router.router)
