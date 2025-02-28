@@ -10,6 +10,11 @@
       href="C:\Users\saura\OneDrive\Desktop\ecommerse\logo.png"
     />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+      src="https://unpkg.com/htmx.org@2.0.4"
+      integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+"
+      crossorigin="anonymous"
+    ></script>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Sign In & Sign Up</title>
@@ -380,44 +385,86 @@
         <!-- SIGN UP -->
         <div class="col align-items-center flex-col sign-up">
           <div class="form-wrapper align-items-center">
-            <div class="form sign-up">
+            <div
+              class="form sign-up"
+              hx-post="/signup"
+              hx-target="#signup-response"
+              hx-swap="innerHTML"
+            >
               <div class="input-group">
                 <i class="bx bxs-user"></i>
-                <input type="text" placeholder="Organization Name" />
+                <input
+                  name="organization_name"
+                  type="text"
+                  placeholder="Organization Name"
+                  required
+                />
               </div>
               <div class="input-group">
                 <i class="bx bx-mail-send"></i>
-                <input type="email" placeholder="Registration Number" />
-              </div>
-              <div class="input-group">
-                <i class="bx bxs-lock-alt"></i>
-                <input type="password" placeholder="Registered Address" />
-              </div>
-              <div class="input-group">
-                <i class="bx bxs-lock-alt"></i>
-                <input type="password" placeholder="Phone Number" />
-              </div>
-
-              <div class="input-group">
-                <i class="bx bxs-lock-alt"></i>
                 <input
-                  type="password"
-                  placeholder="Government Approvals/Certifications (12A, 80G, FCRA)r"
+                  name="registration_number"
+                  type="text"
+                  placeholder="Registration Number"
+                  required
                 />
               </div>
               <div class="input-group">
                 <i class="bx bxs-lock-alt"></i>
-                <input type="password" placeholder="Sector of Work" />
+                <input
+                  name="registered_address"
+                  type="text"
+                  placeholder="Registered Address"
+                  required
+                />
               </div>
               <div class="input-group">
                 <i class="bx bxs-lock-alt"></i>
-                <input type="password" placeholder="Date of Establishment" />
+                <input
+                  name="phone_number"
+                  type="text"
+                  placeholder="Phone Number"
+                  required
+                />
               </div>
               <div class="input-group">
                 <i class="bx bxs-lock-alt"></i>
-                <input type="password" placeholder="Confirm password" />
+                <input
+                  name="government_approvals"
+                  type="text"
+                  placeholder="Government Approvals/Certifications (12A, 80G, FCRA)"
+                  required
+                />
               </div>
-              <button>Sign up</button>
+              <div class="input-group">
+                <i class="bx bxs-lock-alt"></i>
+                <input
+                  name="sector_of_work"
+                  type="text"
+                  placeholder="Sector of Work"
+                  required
+                />
+              </div>
+              <div class="input-group">
+                <i class="bx bxs-lock-alt"></i>
+                <input
+                  name="date_of_establishment"
+                  type="date"
+                  placeholder="Date of Establishment"
+                  required
+                />
+              </div>
+              <div class="input-group">
+                <i class="bx bxs-lock-alt"></i>
+                <input
+                  name="confirm_password"
+                  type="password"
+                  placeholder="Confirm password"
+                  required
+                />
+              </div>
+              <button type="submit">Sign up</button>
+              <p id="signup-response"></p>
               <p>
                 <span> Already have an account? </span>
                 <b onclick="toggle()" class="pointer"> Sign in here </b>
@@ -429,16 +476,32 @@
         <!-- SIGN IN -->
         <div class="col align-items-center flex-col sign-in">
           <div class="form-wrapper align-items-center">
-            <div class="form sign-in">
+            <div
+              class="form sign-in"
+              hx-post="/signin"
+              hx-target="#signin-response"
+              hx-swap="innerHTML"
+            >
               <div class="input-group">
                 <i class="bx bxs-user"></i>
-                <input type="text" placeholder="Username" />
+                <input
+                  name="username"
+                  type="text"
+                  placeholder="Username"
+                  required
+                />
               </div>
               <div class="input-group">
                 <i class="bx bxs-lock-alt"></i>
-                <input type="password" placeholder="Password" />
+                <input
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                  required
+                />
               </div>
-              <button>Sign in</button>
+              <button type="submit">Sign in</button>
+              <p id="signin-response"></p>
               <p>
                 <b> Forgot password? </b>
               </p>
